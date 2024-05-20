@@ -1,12 +1,14 @@
-import { type Config } from "drizzle-kit";
+import type { Config } from "drizzle-kit";
 
 import { env } from "@/env";
 
 export default {
-  schema: "./src/server/db/schema.ts",
-  driver: "libsql",
+  schema: "./src/db/schema.ts",
+  dialect: "postgresql",
+  out: "./drizzle",
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  tablesFilter: ["menu-digital_*"],
+  verbose: true,
+  strict: true,
 } satisfies Config;
